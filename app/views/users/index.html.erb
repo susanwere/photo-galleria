@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container box_1620">
+  <h1>Users</h1>
+  <div class="gallery_f_inner row imageGallery1">
+    <% @users.each do |user| %>
+      <div class="col-lg-3 col-md-4 col-sm-6 ap">
+        <div class="h_gallery_item">
+          <% if user.avatar.attached? %>
+            <%= image_tag user.avatar %>
+          <% end %>
+          <div class="hover">
+            <a href="#"><h4><%= user.username %></h4></a>
+            <div class="hover-links">
+              <%= link_to user.avatar, target: :_blank do %>
+                <i class="fa fa-expand light"></i>
+              <% end %>
+              <%= link_to rails_blob_path(user.avatar, disposition: :attachment) do %>
+                <i class="fa fa-download light"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="button_more">
+    <a class="btn theme_btn" href="#">Load More Images</a>
+  </div>
+  </div>
+</div>
+
+<br>
+
