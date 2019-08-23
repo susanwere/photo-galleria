@@ -1,0 +1,45 @@
+<section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <%= form_with(model: user, local: true) do |form| %>
+                          <% if user.errors.any? %>
+                            <div id="error_explanation">
+                              <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                              <ul>
+                              <% user.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                              <% end %>
+                              </ul>
+                            </div>
+                          <% end %>
+                          <div class="field">
+                            <%= form.text_field :username, placeholder: "username" %>
+                          </div>
+
+                          <div class="field">
+                            <%= form.text_field :email, placeholder: "email" %>
+                          </div>
+
+                          <div class="field">
+                            <%= form.password_field :encrypted_password, placeholder: "password" %>
+                          </div>
+
+                          <div class="field">
+                            <%= form.file_field :avatar, direct_upload: true %>
+                          </div>
+
+                          <div class="actions form-group form-button" >
+                            <%= form.submit class: "form-submit" %>
+                          </div>
+                        <% end %>
+                        </div>
+                    <div class="signup-image">
+                        <figure><%= image_tag 'signup-image.jpg' %></figure>
+                        <a href="#" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
