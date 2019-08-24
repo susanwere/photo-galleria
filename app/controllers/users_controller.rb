@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create! user_params
     @user.avatar.attach(params[:user][:avatar])
-    redirect_to users_path
+    redirect_to photos_path
   end
 
   # PATCH/PUT /users/1
@@ -63,6 +63,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email, :encrypted_password, :avatar)
+      params.require(:user).permit(:username, :email, :password, :avatar)
     end
 end

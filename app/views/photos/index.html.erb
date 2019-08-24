@@ -1,0 +1,30 @@
+<div class="container box_1620">
+    <h1>Gallery</h1>
+    <p id="notice"><%= notice %></p>
+    <div class="gallery_f_inner row imageGallery1">
+      <% @photos.each do |photo| %>
+        <div class="col-lg-3 col-md-4 col-sm-6 ap">
+          <div class="h_gallery_item">
+            <% if photo.image.attached? %>
+              <%= image_tag photo.image %>
+            <% end %>
+            <div class="hover">
+              <a href="#"><h4><%= photo.name %></h4></a>
+              <div class="hover-links">
+                <%= link_to photo.image, target: :_blank do %>
+                  <i class="fa fa-expand light"></i>
+                <% end %>
+                <%= link_to rails_blob_path(photo.image, disposition: :attachment) do %>
+                  <i class="fa fa-download light"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="button_more">
+      <a class="btn theme_btn" href="photos/new">Add an image</a>
+    </div>
+    </div>
+  </div>

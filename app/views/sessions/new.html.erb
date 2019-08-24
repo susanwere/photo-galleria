@@ -2,12 +2,9 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
-                        <%= form_with(model: user, local: true) do |form| %>
-                          <div class="field">
-                            <%= form.text_field :username, placeholder: "username" %>
-                          </div>
-
+                        <h2 class="form-title">Login</h2>
+                        <%= form_for(:session, url: login_path) do |form| %>
+              
                           <div class="field">
                             <%= form.text_field :email, placeholder: "email" %>
                           </div>
@@ -16,18 +13,17 @@
                             <%= form.password_field :password, placeholder: "password" %>
                           </div>
 
-                          <div class="field">
-                            <%= form.file_field :avatar, direct_upload: true %>
-                          </div>
+                          <p id="notice"><%= notice %></p>
 
                           <div class="actions form-group form-button" >
-                            <%= form.submit class: "form-submit" %>
+                            <%= form.submit "Login", class: "form-submit" %>
                           </div>
                         <% end %>
+
                         </div>
                     <div class="signup-image">
                         <figure><%= image_tag 'signup-image.jpg' %></figure>
-                        <%= link_to "I am already a member", login_path, class: "signup-image-link"%>
+                        <%= link_to "New user? Sign up now!", new_user_path, class: "signup-image-link"%>
                     </div>
                 </div>
             </div>
